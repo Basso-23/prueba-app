@@ -3,6 +3,8 @@ import Input from "@/components/Input";
 
 import { useAtom } from "jotai";
 import { atomInputData } from "@/atom";
+import { FiTrash } from "react-icons/fi";
+import { FaCheck } from "react-icons/fa";
 
 const Home = () => {
   const [inputData, setInputData] = useAtom(atomInputData);
@@ -18,6 +20,8 @@ const Home = () => {
 
     // Actualizar el estado de tasks con la nueva tarea
     setTasks([...tasks, newTask]);
+
+    document.getElementById("nombre").value = "";
   };
 
   // Función para eliminar una tarea por su ID
@@ -26,28 +30,58 @@ const Home = () => {
     setTasks(updatedTasks); // Actualizar el estado con la lista filtrada
   };
 
+  const toggleTaskCompletion = (taskId) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === taskId ? { ...task, completed: !task.completed } : task
+    );
+    setTasks(updatedTasks);
+  };
+
   return (
-    <section>
-      <div>Contenido title: {inputData.title}</div>
-      <Input label={"Título"} id={"title"} type={"text"} />
-      <div>Contenido nombre: {inputData.nombre}</div>
-      <Input label={"Nombre"} id={"nombre"} type={"text"} />
-
-      <button onClick={addTask}>Add</button>
-
-      {/* Mostrar las tareas agregadas */}
-      <div>
-        {tasks.map((task, index) => (
-          <div key={index}>
-            <p>ID: {task.id}</p>
-            <p>Título: {task.title}</p>
-            <p>Nombre: {task.nombre}</p>
-            {/* Botón para eliminar la tarea */}
-            <button onClick={() => deleteTask(task.id)}>Eliminar</button>
+    <main className=" min-h-[100dvh] w-full flex my-10">
+      <section className="todo-container">
+        <div className="flex w-full gap-2">
+          <div className="input-container">
+            <Input
+              label={false}
+              id={"nombre"}
+              type={"text"}
+              placeholder={"Ingresa una nueva tarea"}
+            />
           </div>
-        ))}
-      </div>
-    </section>
+          <button className="add-btn" onClick={addTask}>
+            Añadir
+          </button>
+        </div>
+
+        {/* Mostrar las tareas agregadas */}
+        <div className="task-container">
+          {tasks.map((task, index) => (
+            <div key={index} className="task">
+              <div className="task-info">
+                <input
+                  className="checkbox"
+                  type="checkbox"
+                  checked={task.completed}
+                  onChange={() => toggleTaskCompletion(task.id)}
+                />
+                <span className={task.completed ? "line-through" : ""}>
+                  {task.nombre}
+                </span>
+              </div>
+
+              {/* Botón para eliminar la tarea */}
+              <button
+                className="delete-btn"
+                onClick={() => deleteTask(task.id)}
+              >
+                <FiTrash />
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
 

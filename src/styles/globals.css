@@ -3,8 +3,141 @@
 @tailwind utilities;
 
 :root {
-  background-color: white;
+  background-color: #e2f2fc;
   color: #0a0a0a;
+  font-family: "Poppins", sans-serif;
+}
+
+.fixedCenterY {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fixedCenterX {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fixedCenterXnY {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.todo-container {
+  width: 100%;
+  max-width: 400px;
+  height: 500px;
+  background-color: white;
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 18px;
+  overflow: auto;
+}
+
+.input-container {
+  flex: 1 1 0%;
+}
+
+.add-btn {
+  width: fit-content;
+  padding: 0px 12px;
+  background-color: #4071f5;
+  border-radius: 3px;
+  color: white;
+  user-select: none;
+  font-size: 14px;
+}
+
+.delete-btn {
+  width: 40px;
+  aspect-ratio: 1/1;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 6px;
+  color: #757475;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+
+  &:hover {
+    color: #4071f5;
+  }
+}
+
+.task-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.task {
+  border-radius: 3px;
+  display: flex;
+  background-color: #f3f2f3;
+  align-items: center;
+  padding-left: 14px;
+  color: #757475;
+}
+
+input[type="text"] {
+  width: 100%;
+  border: 1px solid #dddddd;
+  padding: 10px 10px;
+  border-radius: 3px;
+  color: #a8a8a8;
+  font-size: 15px;
+}
+
+button,
+input:focus {
+  outline: none;
+}
+
+.task-info {
+  flex: 1 1 0%;
+  display: flex;
+  padding-left: 30px;
+  position: relative;
+}
+
+.checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: absolute;
+  width: 17px;
+  aspect-ratio: 1/1;
+  border-radius: 3px;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border-width: 1px;
+}
+
+input[type="checkbox"] {
+  background-color: transparent;
+  border-color: #a1a1a1;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #4071f5;
+  border-color: #4071f5;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Mobile */
