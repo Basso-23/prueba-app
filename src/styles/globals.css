@@ -32,8 +32,8 @@
   margin: auto;
   border-radius: 5px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  padding: 18px;
-  overflow: auto;
+  position: relative;
+  overflow: hidden;
 }
 
 .input-container {
@@ -70,15 +70,16 @@
 
 .task-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 10px;
-  margin-top: 20px;
+  padding: 0px 18px;
+  padding-bottom: 80px;
 }
 
 .task {
   border-radius: 3px;
   display: flex;
-  background-color: #f3f2f3;
+  background-color: #f5f5f5;
   align-items: center;
   padding-left: 14px;
   color: #757475;
@@ -138,6 +139,42 @@ input[type="checkbox"]:checked::after {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.bottom-container {
+  position: absolute;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  line-height: 1;
+  border-top: 1px solid #d1d1d1;
+  width: 100%;
+  padding: 18px;
+  background-color: white;
+  font-size: 15px;
+}
+
+.clear-btn {
+  background-color: white;
+  border: 1px solid #4071f5;
+  color: #4071f5;
+  font-size: 14px;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 30px;
+  width: 75px;
+  border-radius: 3px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  &:hover {
+    background-color: #4071f5;
+    border: 1px solid #4071f5;
+    color: white;
+  }
 }
 
 /* Mobile */
