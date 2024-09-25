@@ -6,7 +6,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <div>
       <Head>
-        <title>Prueba tecnica</title>
+        <title>Task App</title>
       </Head>
       <Component {...pageProps} />
     </div>

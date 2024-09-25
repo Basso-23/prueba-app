@@ -166,6 +166,7 @@ input[type="checkbox"]:checked::after {
   transform: translateY(-50%);
   height: 30px;
   width: 75px;
+  user-select: none;
   border-radius: 3px;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
